@@ -33,7 +33,7 @@ class SeoMetadataTypeTest extends TypeTestCase
     {
         parent::setUp();
 
-        $validator = $this->getMock('\Symfony\Component\Validator\Validator\ValidatorInterface');
+        $validator = $this->getMock('Symfony\\Component\\Validator\\Validator\\ValidatorInterface');
         $validator->method('validate')->will($this->returnValue(new ConstraintViolationList()));
 
         $typeExtension = new FormTypeValidatorExtension($validator);
@@ -41,9 +41,7 @@ class SeoMetadataTypeTest extends TypeTestCase
         $typeGuesser = $this->getMockBuilder('Symfony\\Component\\Form\\Extension\\Validator\\ValidatorTypeGuesser')
             ->disableOriginalConstructor()
             ->getMock();
-        $types = array(
-            new SeoMetadataType('Silvestra\\Component\\Seo\\Model\\SeoMetadata'),
-        );
+        $types = array(new SeoMetadataType('Silvestra\\Component\\Seo\\Model\\SeoMetadata'));
 
         $this->factory = Forms::createFormFactoryBuilder()
             ->addTypeExtension($typeExtension)
